@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsxy.guide.dao.GuideDao">
+
+    <resultMap type="com.gsxy.guide.entity.Guide" id="GuideMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="toLink" column="to_link" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by" jdbcType="INTEGER"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="delFlag" column="del_flag" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="GuideMap">
+        select id,name,to_link,create_time,create_by,update_time,update_by,status,del_flag
+        from guide
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="GuideMap">
+        select
+        idnameto_linkcreate_timecreate_byupdate_timeupdate_bystatusdel_flag
+        from guide
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="toLink != null and toLink != ''">
+                and to_link = #{toLink}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createBy != null">
+                and create_by = #{createBy}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateBy != null">
+                and update_by = #{updateBy}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from guide
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="toLink != null and toLink != ''">
+                and to_link = #{toLink}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createBy != null">
+                and create_by = #{createBy}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateBy != null">
+                and update_by = #{updateBy}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="delFlag != null">
+                and del_flag = #{delFlag}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into guide(nameto_linkcreate_timecreate_byupdate_timeupdate_bystatusdel_flag)
+        values (#{name}#{toLink}#{createTime}#{createBy}#{updateTime}#{updateBy}#{status}#{delFlag})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into guide(nameto_linkcreate_timecreate_byupdate_timeupdate_bystatusdel_flag)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}#{entity.toLink}#{entity.createTime}#{entity.createBy}#{entity.updateTime}#{entity.updateBy}#{entity.status}#{entity.delFlag})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into guide(nameto_linkcreate_timecreate_byupdate_timeupdate_bystatusdel_flag)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}#{entity.toLink}#{entity.createTime}#{entity.createBy}#{entity.updateTime}#{entity.updateBy}#{entity.status}#{entity.delFlag})
+        </foreach>
+        on duplicate key update
+        name = values(name)to_link = values(to_link)create_time = values(create_time)create_by =
+        values(create_by)update_time = values(update_time)update_by = values(update_by)status = values(status)del_flag =
+        values(del_flag)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update guide
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="toLink != null and toLink != ''">
+                to_link = #{toLink},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createBy != null">
+                create_by = #{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateBy != null">
+                update_by = #{updateBy},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from guide
+        where id = #{id}
+    </delete>
+
+</mapper>
+
