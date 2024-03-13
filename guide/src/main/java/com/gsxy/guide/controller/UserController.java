@@ -31,7 +31,7 @@ public class UserController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping
+    @GetMapping("/queryByPage")
     public ResponseEntity<Page<User>> queryByPage(User user, PageRequest pageRequest) {
         return ResponseEntity.ok(this.userService.queryByPage(user, pageRequest));
     }
@@ -53,7 +53,7 @@ public class UserController {
      * @param user 实体
      * @return 新增结果
      */
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<User> add(User user) {
         return ResponseEntity.ok(this.userService.insert(user));
     }
@@ -64,7 +64,7 @@ public class UserController {
      * @param user 实体
      * @return 编辑结果
      */
-    @PutMapping
+    @PutMapping("/edit")
     public ResponseEntity<User> edit(User user) {
         return ResponseEntity.ok(this.userService.update(user));
     }
@@ -74,7 +74,7 @@ public class UserController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
+    @DeleteMapping("/deleteById")
     public ResponseEntity<Boolean> deleteById(Long id) {
         return ResponseEntity.ok(this.userService.deleteById(id));
     }
