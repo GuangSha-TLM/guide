@@ -71,7 +71,6 @@ public class UserController {
 
     /**
      * 删除数据
-     *
      * @param id 主键
      * @return 删除是否成功
      */
