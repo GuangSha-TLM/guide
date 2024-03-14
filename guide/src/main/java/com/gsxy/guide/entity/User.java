@@ -7,54 +7,68 @@ import java.io.Serializable;
  * 用户实体类
  */
 public class User implements Serializable {
-    private static final long serialVersionUID = -89059201838228292L;
+    private static final long serialVersionUID = -16000919610921848L;
 
     private Long id;
-/**
-     * 账号
+    /**
+     *  用户名
      */
     private String username;
-/**
+    /**
      * 密码
      */
     private String password;
-/**
-     * 名字
-     */
-    private String name;
-/**
-     * 权限
-     */
-    private Integer role;
-/**
-     * 部门
-     */
-    private String org;
-/**
+
+    /**
      * 创建人
      */
     private Long createBy;
-/**
-     * 创建时间
+
+    /**
+     *  创建时间
      */
     private Date createTime;
-/**
-     * 修改人
+
+    /**
+     *  更新人
      */
     private Long updateBy;
-/**
-     * 修改时间
+
+    /**
+     *  更新时间
      */
     private Date updateTime;
-/**
-     * 状态
-     */
+
     private Integer status;
-/**
-     * 逻辑删除
+
+    /**
+     *  逻辑删除（0：正常，1：删除）
      */
     private Integer delFlag;
 
+    public User() {
+    }
+    public User( String username, String password,  Date createTime,  Date updateTime, Integer status, Integer delFlag) {
+        this.username = username;
+        this.password = password;
+
+        this.createTime = createTime;
+
+        this.updateTime = updateTime;
+        this.status = status;
+        this.delFlag = delFlag;
+    }
+
+    public User(Long id, String username, String password, Long createBy, Date createTime, Long updateBy, Date updateTime, Integer delFlag) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.delFlag = delFlag;
+    }
 
     public Long getId() {
         return id;
@@ -78,30 +92,6 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    public String getOrg() {
-        return org;
-    }
-
-    public void setOrg(String org) {
-        this.org = org;
     }
 
     public Long getCreateBy() {
@@ -136,14 +126,6 @@ public class User implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public Integer getDelFlag() {
         return delFlag;
     }
@@ -152,5 +134,27 @@ public class User implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", createBy=" + createBy +
+                ", createTime=" + createTime +
+                ", updateBy=" + updateBy +
+                ", updateTime=" + updateTime +
+                ", status=" + status +
+                ", delFlag=" + delFlag +
+                '}';
+    }
 }
 

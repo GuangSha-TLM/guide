@@ -1,14 +1,13 @@
 package com.gsxy.guide.service.impl;
 
 import com.gsxy.guide.entity.Guide;
-import com.gsxy.guide.dao.GuideDao;
+import com.gsxy.guide.mapper.GuideMapper;
 import com.gsxy.guide.service.GuideService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-
-import javax.annotation.Resource;
 
 /**
  * 向导实现类
@@ -18,8 +17,8 @@ import javax.annotation.Resource;
  */
 @Service("guideService")
 public class GuideServiceImpl implements GuideService {
-    @Resource
-    private GuideDao guideDao;
+    @Autowired
+    private GuideMapper guideMapper;
 
     /**
      * 通过ID查询单条数据
@@ -29,7 +28,7 @@ public class GuideServiceImpl implements GuideService {
      */
     @Override
     public Guide queryById(Long id) {
-        return this.guideDao.queryById(id);
+        return this.guideMapper.queryById(id);
     }
 
     /**
@@ -41,8 +40,8 @@ public class GuideServiceImpl implements GuideService {
      */
     @Override
     public Page<Guide> queryByPage(Guide guide, PageRequest pageRequest) {
-        long total = this.guideDao.count(guide);
-        return new PageImpl<>(this.guideDao.queryAllByLimit(guide, pageRequest), pageRequest, total);
+        long total = this.guideMapper.count(guide);
+        return new PageImpl<>(this.guideMapper.queryAllByLimit(guide, pageRequest), pageRequest, total);
     }
 
     /**
@@ -53,7 +52,7 @@ public class GuideServiceImpl implements GuideService {
      */
     @Override
     public Guide insert(Guide guide) {
-        this.guideDao.insert(guide);
+        this.guideMapper.insert(guide);
         return guide;
     }
 
@@ -65,7 +64,7 @@ public class GuideServiceImpl implements GuideService {
      */
     @Override
     public Guide update(Guide guide) {
-        this.guideDao.update(guide);
+        this.guideMapper.update(guide);
         return this.queryById(guide.getId());
     }
 
@@ -77,6 +76,6 @@ public class GuideServiceImpl implements GuideService {
      */
     @Override
     public boolean deleteById(Long id) {
-        return this.guideDao.deleteById(id) > 0;
+        return this.guideMapper.deleteById(id) > 0;
     }
 }

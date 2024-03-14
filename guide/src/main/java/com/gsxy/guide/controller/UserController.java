@@ -1,7 +1,11 @@
 package com.gsxy.guide.controller;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.gsxy.guide.entity.User;
+import com.gsxy.guide.entity.bo.UserLoginBo;
+import com.gsxy.guide.entity.vo.ResponseVo;
 import com.gsxy.guide.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +27,42 @@ public class UserController {
      */
     @Resource
     private UserService userService;
+
+
+    /**
+     *  @Auther Oh… Yeah!!! 2024-3-5
+     *  用户注册
+     * @param userLoginBo
+     * @return String.class
+     */
+    @PostMapping("/userReg")
+    @ApiOperation("用户注册")
+    public String userReg(@RequestBody UserLoginBo userLoginBo){
+        if(userLoginBo != null){
+            JSONArray.toJSONString(new ResponseVo("参数为null",null,"0x455"));
+        }
+
+        return JSONArray.toJSONString(userService.userReg(userLoginBo));
+    }
+
+
+    /**
+     *  @Auther Oh… Yeah!!! 2024-3-5
+     *  用户登录
+     * @param userLoginBo
+     * @return
+     */
+    @PostMapping("/login")
+    @ApiOperation("用户登录")
+    public String userLogin(@RequestBody UserLoginBo userLoginBo){
+        if(userLoginBo == null){
+            JSONArray.toJSONString(new ResponseVo("参数为null",null,"0x455"));
+        }
+
+        return JSONArray.toJSONString(userService.userLogin(userLoginBo));
+    }
+
+
 
     /**
      * 分页查询

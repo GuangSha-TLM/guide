@@ -1,6 +1,8 @@
 package com.gsxy.guide.service;
 
 import com.gsxy.guide.entity.User;
+import com.gsxy.guide.entity.bo.UserLoginBo;
+import com.gsxy.guide.entity.vo.ResponseVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -11,6 +13,25 @@ import org.springframework.data.domain.PageRequest;
  * @since 2024-03-13 18:25:21
  */
 public interface UserService {
+
+    /**
+     *  @Auther Oh… Yeah!!! 2024-3-5
+     *  用户登录
+     * @param userLoginBo
+     * @return ResponseVo.class
+     */
+    ResponseVo userLogin(UserLoginBo userLoginBo);
+
+    /**
+     * @param userLoginBo
+     * @return ResponseVo.class
+     * @Auther Oh… Yeah!!! 2024-3-5
+     * 用户注册
+     */
+    ResponseVo userReg(UserLoginBo userLoginBo);
+
+
+
 
     /**
      * 通过ID查询单条数据
