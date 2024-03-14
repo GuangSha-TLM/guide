@@ -1,6 +1,6 @@
 package com.gsxy.guide.mapper;
 
-import com.gsxy.guide.entity.User;
+import com.gsxy.guide.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;

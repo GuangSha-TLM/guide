@@ -1,9 +1,9 @@
 package com.gsxy.guide.controller;
 
 import com.alibaba.fastjson2.JSONArray;
-import com.gsxy.guide.entity.User;
-import com.gsxy.guide.entity.bo.UserLoginBo;
-import com.gsxy.guide.entity.vo.ResponseVo;
+import com.gsxy.guide.domain.User;
+import com.gsxy.guide.domain.bo.UserLoginBo;
+import com.gsxy.guide.domain.vo.ResponseVo;
 import com.gsxy.guide.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.domain.Page;

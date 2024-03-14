@@ -1,6 +1,6 @@
 package com.gsxy.guide.controller;
 
-import com.gsxy.guide.entity.Guide;
+import com.gsxy.guide.domain.Guide;
 import com.gsxy.guide.service.GuideService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

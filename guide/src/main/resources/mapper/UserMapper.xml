@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsxy.guide.mapper.UserMapper">
 
-    <resultMap type="com.gsxy.guide.entity.User" id="UserMap">
+    <resultMap type="com.gsxy.guide.domain.User" id="UserMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="username" column="username" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
@@ -21,7 +21,7 @@
 
 
     <!-- 用户名查找用户 -->
-    <select id="findByUsername" resultType="com.gsxy.guide.entity.User" >
+    <select id="findByUsername" resultType="com.gsxy.guide.domain.User" >
         select *
         from user
         where
@@ -30,7 +30,7 @@
     </select>
 
     <!--注册用户-->
-    <insert id="userReg" parameterType="com.gsxy.guide.entity.User">
+    <insert id="userReg" parameterType="com.gsxy.guide.domain.User">
         insert into
             user
         (username,password,create_time,update_time,status,del_flag)
@@ -39,7 +39,7 @@
     </insert>
 
     <!--更新用户登录时间-->
-    <update id="updateLoginTime" parameterType="com.gsxy.guide.entity.User">
+    <update id="updateLoginTime" parameterType="com.gsxy.guide.domain.User">
         update user
         <set>
             <if test="true">

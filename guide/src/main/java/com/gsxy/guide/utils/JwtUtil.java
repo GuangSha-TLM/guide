@@ -1,7 +1,7 @@
 package com.gsxy.guide.utils;
 
 
-import com.gsxy.guide.entity.User;
+import com.gsxy.guide.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;

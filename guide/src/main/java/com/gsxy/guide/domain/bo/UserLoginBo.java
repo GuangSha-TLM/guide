@@ -1,4 +1,4 @@
-package com.gsxy.guide.entity.bo;
+package com.gsxy.guide.domain.bo;
 
 import java.io.Serializable;
 

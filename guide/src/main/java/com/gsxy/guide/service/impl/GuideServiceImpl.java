@@ -1,6 +1,6 @@
 package com.gsxy.guide.service.impl;
 
-import com.gsxy.guide.entity.Guide;
+import com.gsxy.guide.domain.Guide;
 import com.gsxy.guide.mapper.GuideMapper;
 import com.gsxy.guide.service.GuideService;
 import org.springframework.beans.factory.annotation.Autowired;

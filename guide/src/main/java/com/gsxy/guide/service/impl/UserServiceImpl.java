@@ -1,9 +1,9 @@
 package com.gsxy.guide.service.impl;
 
-import com.gsxy.guide.entity.User;
+import com.gsxy.guide.domain.User;
 import com.gsxy.guide.mapper.UserMapper;
-import com.gsxy.guide.entity.bo.UserLoginBo;
-import com.gsxy.guide.entity.vo.ResponseVo;
+import com.gsxy.guide.domain.bo.UserLoginBo;
+import com.gsxy.guide.domain.vo.ResponseVo;
 import com.gsxy.guide.service.UserService;
 import com.gsxy.guide.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

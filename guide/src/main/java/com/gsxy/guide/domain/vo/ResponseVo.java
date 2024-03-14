@@ -1,4 +1,4 @@
-package com.gsxy.guide.entity.vo;
+package com.gsxy.guide.domain.vo;
 
 /**
  * 2023-10-23

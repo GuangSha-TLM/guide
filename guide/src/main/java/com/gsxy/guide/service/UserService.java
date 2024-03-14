@@ -1,8 +1,8 @@
 package com.gsxy.guide.service;
 
-import com.gsxy.guide.entity.User;
-import com.gsxy.guide.entity.bo.UserLoginBo;
-import com.gsxy.guide.entity.vo.ResponseVo;
+import com.gsxy.guide.domain.User;
+import com.gsxy.guide.domain.bo.UserLoginBo;
+import com.gsxy.guide.domain.vo.ResponseVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 

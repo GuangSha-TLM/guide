@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsxy.guide.mapper.GuideMapper">
 
-    <resultMap type="com.gsxy.guide.entity.Guide" id="GuideMap">
+    <resultMap type="com.gsxy.guide.domain.Guide" id="GuideMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="toLink" column="to_link" jdbcType="VARCHAR"/>
