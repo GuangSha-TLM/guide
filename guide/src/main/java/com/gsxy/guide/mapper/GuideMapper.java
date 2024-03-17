@@ -1,6 +1,7 @@
 package com.gsxy.guide.mapper;
 
 import com.gsxy.guide.domain.Guide;
+import com.gsxy.guide.domain.vo.GuidePagingToData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
@@ -81,5 +82,20 @@ public interface GuideMapper {
      */
     int deleteById(Long id);
 
+    /**
+     * 分页查询
+     * @param start
+     * @param size
+     * @param guide
+     * @return
+     */
+    List<GuidePagingToData> guidePagingToGetUserData(  Long start,  Integer size,@Param("params") Guide guide);
+
+    /**
+     * 查找总数
+     * @param guide
+     * @return
+     */
+    Long getCount(@Param("params") Guide guide);
 }
 

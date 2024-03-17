@@ -1,6 +1,9 @@
 package com.gsxy.guide.controller;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.gsxy.guide.domain.Guide;
+import com.gsxy.guide.domain.bo.GuidePagingToGetDataBo;
+import com.gsxy.guide.domain.vo.ResponseVo;
 import com.gsxy.guide.service.GuideService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,9 +34,10 @@ public class GuideController {
      * @param pageRequest      分页对象
      * @return 查询结果
      */
-    @GetMapping("/queryByPage")
-    public ResponseEntity<Page<Guide>> queryByPage(Guide guide, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.guideService.queryByPage(guide, pageRequest));
+    @PostMapping("/queryByPage")
+    public String queryByPage(@RequestBody GuidePagingToGetDataBo guidePagingToGetDataBo) {
+
+        return JSONArray.toJSONString(guideService.queryByPage(guidePagingToGetDataBo));
     }
 
     /**
@@ -43,8 +47,8 @@ public class GuideController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public ResponseEntity<Guide> queryById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(this.guideService.queryById(id));
+    public ResponseVo queryById(@PathVariable("id") Long id) {
+        return guideService.queryById(id);
     }
 
     /**
@@ -54,8 +58,8 @@ public class GuideController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public ResponseEntity<Guide> add(Guide guide) {
-        return ResponseEntity.ok(this.guideService.insert(guide));
+    public ResponseVo add(@RequestBody Guide guide) {
+        return guideService.insert(guide);
     }
 
     /**
@@ -65,8 +69,8 @@ public class GuideController {
      * @return 编辑结果
      */
     @PutMapping("/edit")
-    public ResponseEntity<Guide> edit(Guide guide) {
-        return ResponseEntity.ok(this.guideService.update(guide));
+    public ResponseVo edit(@RequestBody Guide guide) {
+        return guideService.update(guide);
     }
 
     /**
@@ -76,8 +80,8 @@ public class GuideController {
      * @return 删除是否成功
      */
     @DeleteMapping("/deleteById")
-    public ResponseEntity<Boolean> deleteById(Long id) {
-        return ResponseEntity.ok(this.guideService.deleteById(id));
+    public ResponseVo deleteById(@RequestParam("id")  Long id) {
+        return guideService.deleteById(id);
     }
 
 }

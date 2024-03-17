@@ -46,6 +46,12 @@ public class Guide implements Serializable {
      */
     private Integer delFlag;
 
+    public Guide() {
+    }
+
+    public Guide(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

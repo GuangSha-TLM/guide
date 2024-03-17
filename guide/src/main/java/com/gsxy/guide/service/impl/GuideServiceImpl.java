@@ -1,13 +1,21 @@
 package com.gsxy.guide.service.impl;
 
 import com.gsxy.guide.domain.Guide;
+import com.gsxy.guide.domain.bo.GuidePagingToGetDataBo;
+import com.gsxy.guide.domain.vo.GuidePagingToData;
+import com.gsxy.guide.domain.vo.GuidePagingToGetDataVo;
+import com.gsxy.guide.domain.vo.ResponseVo;
 import com.gsxy.guide.mapper.GuideMapper;
 import com.gsxy.guide.service.GuideService;
+import com.gsxy.guide.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * 向导实现类
@@ -27,9 +35,18 @@ public class GuideServiceImpl implements GuideService {
      * @return 实例对象
      */
     @Override
-    public Guide queryById(Long id) {
-        return this.guideMapper.queryById(id);
+    public ResponseVo queryById(Long id) {
+
+        Guide guide = guideMapper.queryById(id);
+
+        if (guide == null){
+            return new ResponseVo("查询失败，可能不存在此信息", null,"0x500");
+        }
+
+        return new ResponseVo("查询成功", guide,"0x200");
     }
+
+
 
     /**
      * 分页查询
@@ -39,11 +56,25 @@ public class GuideServiceImpl implements GuideService {
      * @return 查询结果
      */
     @Override
-    public Page<Guide> queryByPage(Guide guide, PageRequest pageRequest) {
-        long total = this.guideMapper.count(guide);
-        return new PageImpl<>(this.guideMapper.queryAllByLimit(guide, pageRequest), pageRequest, total);
-    }
+    public ResponseVo queryByPage(GuidePagingToGetDataBo guidePagingToGetDataBo) {
+        String userId = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userInfo").get("id");
+        System.out.println(userId);
+        Guide guide = guidePagingToGetDataBo.getGuide();
+        if (guide==null){
+            guide = new Guide();
+        }
+//        guide.setCreateBy(Long.valueOf(userId));
 
+        List<GuidePagingToData> fileList = guideMapper.guidePagingToGetUserData(guidePagingToGetDataBo.getStart(),guidePagingToGetDataBo.getSize(),guidePagingToGetDataBo.getGuide());
+        Long count = guideMapper.getCount(guidePagingToGetDataBo.getGuide());
+//        System.out.println(count);
+
+//        HashMap<String,Object> map = new HashMap<>();
+//        map.put("count",count);
+//        map.put("list",fileList);
+
+        return new ResponseVo("查询成功",new GuidePagingToGetDataVo(fileList,Math.toIntExact(count)),"0x200");
+    }
     /**
      * 新增数据
      *
@@ -51,9 +82,14 @@ public class GuideServiceImpl implements GuideService {
      * @return 实例对象
      */
     @Override
-    public Guide insert(Guide guide) {
-        this.guideMapper.insert(guide);
-        return guide;
+    public ResponseVo insert(Guide guide) {
+        int insert = guideMapper.insert(guide);
+
+        if (insert == 0){
+            new ResponseVo("添加失败，可能不存在此信息", null,"0x500");
+        }
+
+        return new ResponseVo("添加成功", null,"0x200");
     }
 
     /**
@@ -63,9 +99,14 @@ public class GuideServiceImpl implements GuideService {
      * @return 实例对象
      */
     @Override
-    public Guide update(Guide guide) {
-        this.guideMapper.update(guide);
-        return this.queryById(guide.getId());
+    public ResponseVo update(Guide guide) {
+        int update = this.guideMapper.update(guide);
+
+        if (update == 0){
+            new ResponseVo("修改失败，可能不存在此信息", null,"0x500");
+        }
+
+        return new ResponseVo("修改成功", null,"0x200");
     }
 
     /**
@@ -75,7 +116,14 @@ public class GuideServiceImpl implements GuideService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Long id) {
-        return this.guideMapper.deleteById(id) > 0;
+    public ResponseVo deleteById(Long id) {
+
+        boolean b = guideMapper.deleteById(id) > 0;
+
+        if (!b){
+            new ResponseVo("删除失败，可能不存在此信息", null,"0x500");
+        }
+
+        return new ResponseVo("删除成功", null,"0x200");
     }
 }
