@@ -5,9 +5,6 @@ import com.gsxy.guide.domain.Guide;
 import com.gsxy.guide.domain.bo.GuidePagingToGetDataBo;
 import com.gsxy.guide.domain.vo.ResponseVo;
 import com.gsxy.guide.service.GuideService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
