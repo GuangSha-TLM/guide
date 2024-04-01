@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -7,10 +8,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 var VueCookie = require('vue-cookie');
 Vue.config.productionTip = false
 
+Vue.use(ElementUI);
+Vue.use(VueCookie);
+
+// 设置全局属性
+Vue.prototype.$cookie = VueCookie;
+
 new Vue({
   router,
   store,
-  ElementUI,
-  VueCookie,
   render: h => h(App)
 }).$mount('#app')

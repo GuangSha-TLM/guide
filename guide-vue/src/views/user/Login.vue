@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-01 16:11:21
- * @LastEditTime: 2024-04-01 16:26:23
+ * @LastEditTime: 2024-04-01 17:09:07
  * @LastEditors: tianleiyu
  * @Description: 
  * @FilePath: /guide-vue/src/views/user/Login.vue
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-// import { resLogin } from '@/api/user';
+import { userLogin } from '@/api/user';
 export default {
     name: 'HomeView',
     data() {
@@ -46,11 +46,11 @@ export default {
             rules: {
                 username: [
                     { required: true, message: '请输入用户名', trigger: 'blur' },
-                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                    // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
                 ],
                 password: [
                     { required: true, message: '请输入密码', trigger: 'blur' },
-                    { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                    // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
                 ],
             }
         }
@@ -59,14 +59,13 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    resLogin(this.user).then(res => {
+                    userLogin(this.user).then(res => {
                         if (res.data.code === '0x200') {
                             this.$message({
                                 showClose: true,
                                 message: '登陆成功!',
                                 type: 'success'
                             });
-
                             this.$cookie.set('token', res.data.token);
                             // this.$router.push('/aisle')
                         } else {
@@ -104,7 +103,7 @@ export default {
     height: 588Px;
     border-radius: 15Px;
     padding: 0 50Px;
-    position: relative;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
