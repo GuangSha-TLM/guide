@@ -26,7 +26,7 @@
         </div>
       </div>
 
-  </template>
+  </template> 
 
   <script>
   import { userRegister } from '@/api/user';

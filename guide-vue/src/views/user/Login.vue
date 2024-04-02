@@ -28,7 +28,11 @@
             <div class="msg">
                 <router-link to="/register">去注册--></router-link>
             </div>
-        </div>
+            <div class="msg">
+            <router-link to="/LoginTwo">另外一套登录方法--></router-link>
+          </div>
+        </div> 
+   
     </div>
 
 </template>

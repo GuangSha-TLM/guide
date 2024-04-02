@@ -29,7 +29,7 @@
         </div>
 
         <a class="btn btn-block btn-dark text-truncate rounded-0 py-2 d-none d-lg-block" style="z-index: 1000;color:aliceblue" target="_blank">
-            <strong>哈尔滨广厦学院</strong>  图床系统 V0.1 By TLM Team
+            <strong>哈尔滨广厦学院</strong>  向导系统 V0.1 By TLM Team
         </a>
 
 
@@ -37,9 +37,9 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <div class="container">
                     <!-- Brand -->
-                    <a class="navbar-brand"  href="/h">
+                    <!-- <a class="navbar-brand"  href="/h">
                         <img alt="Image placeholder" style="height:3.4rem" src="123123" id="navbar-logo">
-                    </a>
+                    </a> -->
                     <!-- Toggler -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
