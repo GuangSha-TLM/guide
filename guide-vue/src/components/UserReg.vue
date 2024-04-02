@@ -56,7 +56,6 @@
 <script>
 import Foot from './fream/Foot.vue';
 import Top from './fream/LoginTop.vue';
-import { synRequestPost, synRequestGet } from "../../static/request"
 
 export default {
     name: 'Register',

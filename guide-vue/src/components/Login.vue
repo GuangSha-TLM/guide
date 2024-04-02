@@ -42,7 +42,7 @@
   <script>
   import Foot from './fream/Foot.vue';
   import Top  from './fream/LoginTop.vue'
-  import {synRequestPost,synRequestGet} from "../../static/request.js"
+
 
   export default {
     name: 'HelloWorld',
@@ -65,23 +65,7 @@
 
   methods: {
     //提交登入
-    async submit(){
-         this.switchbutton = true;
-         var object =await synRequestPost("/user/login",this.userLoginBo);
-         console.log(object);
-         if(object.code != "0x200"){
-            alert(object.message);
-            this.userLoginBo.username= ""
-            this.userLoginBo.password= "";
-            this.switchbutton = false;
-            return ;
-         }
-        setCookie ("token",object.data.token);
-        localStorage.setItem("user",JSON.stringify(object.data.userAndUserAdminBo));
-         alert(object.message);
-         this.$router.push("/ActivityManagement");
-         this.switchbutton = false;
-     },
+    
 }
   }
   </script>
