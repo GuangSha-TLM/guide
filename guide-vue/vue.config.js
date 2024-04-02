@@ -6,8 +6,7 @@ module.exports = defineConfig({
   lintOnSave: false,
 
   //配置代理跨域
-  devServer: {
-    
+  devServer: { 
     proxy: {
       "/api": {
         target: "http://localhost:8083",

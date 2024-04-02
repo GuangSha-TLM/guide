@@ -8,7 +8,7 @@
 //  $ @可以输入预定的版权声明、个性签名、空行等
 //  $/
 import http from '@/utils/requests'
-
+ 
 export function  userLogin(user){
         return http({
             url: "/api/user/login",
@@ -16,4 +16,16 @@ export function  userLogin(user){
             data: user
     })
     
-}
+};
+
+
+export function userRegister(user){ 
+    return http({ 
+        url: "/api/user/userReg", 
+        method: "post",
+        data: user 
+        })
+
+    };
+
+ 

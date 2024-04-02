@@ -26,7 +26,7 @@
                 </div>
             </el-form>
             <div class="msg">
-                <router-link to="/register">-->去注册</router-link>
+                <router-link to="/register">去注册--></router-link>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@ export default {
             }
         }
     },
-    methods: {
+    methods: {  
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
