@@ -10,6 +10,7 @@
 
 <template>
     <div class="container">
+        
         <div class="login-wrapper">
             <el-form :model="user" :rules="rules" ref="user" class="demo-ruleForm">
                 <div class="form-wrapper">
@@ -29,10 +30,10 @@
                 <router-link to="/register">去注册--></router-link>
             </div>
             <div class="msg">
-            <router-link to="/LoginTwo">另外一套登录方法--></router-link>
-          </div>
-        </div> 
-   
+                <router-link to="/LoginTwo">另外一套登录方法--></router-link>
+            </div>
+        </div>
+
     </div>
 
 </template>
@@ -59,7 +60,7 @@ export default {
             }
         }
     },
-    methods: {  
+    methods: {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
@@ -95,13 +96,18 @@ export default {
 /*
       这里写PC端的样式
     */
+ 
+
 .container {
+ 
     height: 100%;
-    background-color: #f7f7f7;
+    position: absolute;
+    background-color:  #f7f7f7;
     // background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
 }
 
 .login-wrapper {
+
     background-color: #fff;
     width: 358Px;
     height: 588Px;
@@ -111,9 +117,13 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    
 }
 
 .header {
+    font-family: '微软雅黑';
+    color: black;
+
     font-size: 38Px;
     font-weight: bold;
     text-align: center;

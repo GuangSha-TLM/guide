@@ -39,7 +39,7 @@
         </div>
     
         <div class="msg">
-            <router-link to="/login">另外一套登录方法--></router-link>
+            <router-link to="/login"><--另外一套登录方法</router-link>
           </div>
       </div>
 
