@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="msg">
-                        <router-link to="/LoginTwo"><--去登陆< /router-link>
+                        <router-link to="/LoginTwo"><--去登陆</router-link>
                     </div>
                 </div>
             </div>
