@@ -57,8 +57,8 @@ public class GuideServiceImpl implements GuideService {
      */
     @Override
     public ResponseVo queryByPage(GuidePagingToGetDataBo guidePagingToGetDataBo) {
-        String userId = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userInfo").get("id");
-        System.out.println(userId);
+//        String userId = (String) ThreadLocalUtil.mapThreadLocalOfJWT.get().get("userInfo").get("id");
+//        System.out.println(userId);
         Guide guide = guidePagingToGetDataBo.getGuide();
         if (guide==null){
             guide = new Guide();

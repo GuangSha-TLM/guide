@@ -28,4 +28,17 @@ export function userRegister(user){
 
     };
 
+
+export function userList(listMessage){ 
+    return http({
+      url: "/api/guide/queryByPage",
+      method: "post",
+      data: listMessage,
+    });
+
+    };
+
+
+
+
  

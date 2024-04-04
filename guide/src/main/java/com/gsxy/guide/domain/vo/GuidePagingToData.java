@@ -2,6 +2,8 @@ package com.gsxy.guide.domain.vo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 
+import java.util.Date;
+
 public class GuidePagingToData {
 
     /**
@@ -19,14 +21,20 @@ public class GuidePagingToData {
      */
     private String toLink;
 
+    /**
+     * 修改时间
+     */
+    private Date updateTime;
+
 
     public GuidePagingToData() {
     }
 
-    public GuidePagingToData(Long id, String name, String toLink) {
+    public GuidePagingToData(Long id, String name, String toLink, Date updateTime) {
         this.id = id;
         this.name = name;
         this.toLink = toLink;
+        this.updateTime = updateTime;
     }
 
     public Long getId() {
@@ -53,12 +61,21 @@ public class GuidePagingToData {
         this.toLink = toLink;
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public String toString() {
         return "GuidePagingToData{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", toLink='" + toLink + '\'' +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }

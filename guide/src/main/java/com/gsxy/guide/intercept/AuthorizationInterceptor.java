@@ -1,3 +1,4 @@
+/*
 package com.gsxy.guide.intercept;
 
 import com.gsxy.guide.utils.JwtUtil;
@@ -73,3 +74,4 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         // 在请求完成之后调用，可以进行最终的清理工作
     }
 }
+*/

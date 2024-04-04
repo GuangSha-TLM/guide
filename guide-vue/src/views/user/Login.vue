@@ -10,7 +10,6 @@
 
 <template>
     <div class="container">
-        
         <div class="login-wrapper">
             <el-form :model="user" :rules="rules" ref="user" class="demo-ruleForm">
                 <div class="form-wrapper">
@@ -40,6 +39,8 @@
 
 <script>
 import { userLogin } from '@/api/user';
+import { setToken } from '@/utils/token.js'
+
 export default {
     name: 'HomeView',
     data() {
@@ -73,6 +74,7 @@ export default {
                             });
                             this.$cookie.set('token', res.data.token);
                             // this.$router.push('/aisle')
+                            setToken(res.data.data) // 设置token
                         } else {
                             this.$message({
                                 showClose: true,
@@ -101,7 +103,7 @@ export default {
 .container {
  
     height: 100%;
-    position: absolute;
+    // position: absolute;
     background-color:  #f7f7f7;
     // background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
 }
