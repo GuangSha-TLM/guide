@@ -19,7 +19,7 @@
                         <el-input v-model="user.username" placeholder="username" class="input-item"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input v-model="user.password" placeholder="password" class="input-item"></el-input>
+                        <el-input v-model="user.password"  type="password" placeholder="password" class="input-item"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button class="btn" type="primary" @click="submitForm('user')">登陆</el-button>
@@ -74,10 +74,13 @@ export default {
                                 showClose: true,
                                 message: '登陆成功!',
                                 type: 'success'
-                            });
-                            this.$cookie.set('token', res.data.token);
+                            }); 
+                            // console.log(res); 
+                            this.$cookie.set('token', res.data.data);
                             // this.$router.push('/aisle')
-                            setToken(res.data.data) // 设置token
+                            // 设置token
+                            setToken(res.data.data) 
+                            this.$router.push('/guideList')
                         } else {
                             this.$message({
                                 showClose: true,

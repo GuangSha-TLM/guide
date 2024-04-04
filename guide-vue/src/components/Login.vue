@@ -13,26 +13,15 @@
             <div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  v-model="userLoginBo.username"
-                />
-                <small id="emailHelp" class="form-text text-muted"
-                  >We'll never share your email with anyone else.</small
-                >
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  v-model="userLoginBo.username" />
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                  else.</small>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  v-model="userLoginBo.password"
-                  @keyup.enter="submit()"
-                />
+                <input type="password" class="form-control" id="exampleInputPassword1" v-model="userLoginBo.password"
+                  @keyup.enter="submit()" />
               </div>
               <div class="form-group form-check"></div>
 
@@ -40,11 +29,7 @@
                 :disabled="switchbutton">Submit</button>
             </div> -->
 
-              <button
-                class="btn btn-primary"
-                style="width: 100%"
-                @click="submit()"
-              >
+              <button class="btn btn-primary" style="width: 100%" @click="submit()">
                 Submit
               </button>
             </div>
@@ -87,7 +72,7 @@ export default {
       switchbutton: false,
     };
   },
-  mounted() {},
+  mounted() { },
 
   methods: {
     //提交登入
@@ -96,11 +81,12 @@ export default {
       userLogin(this.userLoginBo).then((res) => {
         console.log(res);
         alert("登入成功");
-        this.$cookie.set('token', res.data.data)
+        this.$cookie.set("token", res.data.data);
         // this.$cookie.set('tokenHello world!', 1);
-        console.log(this.$cookie.get('token'));
+        console.log(this.$cookie.get("token"));
         // this.$router.push('/')
         // this.$router.go(-1)
+        this.$router.push("/guideList");
       });
     },
   },

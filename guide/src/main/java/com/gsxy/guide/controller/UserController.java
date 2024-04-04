@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  * @since 2024-03-13 18:25:21
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping(value = "user", produces = "text/plain;charset=UTF-8")
 public class UserController {
     /**
      * 服务对象

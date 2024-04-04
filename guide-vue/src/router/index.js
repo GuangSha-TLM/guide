@@ -3,8 +3,7 @@ import VueRouter from "vue-router";
 var VueCookie = require('vue-cookie');
 import HomeView from "../views/HomeView.vue";
 import Login from "@/components/Login.vue";
-import UserReg from "@/components/UserReg.vue";
-import GuideList from "@/views/guide/GuideList.vue";
+import UserReg from "@/components/UserReg.vue"; 
 
 Vue.use(VueRouter);
 
@@ -42,8 +41,8 @@ const routes = [
   },
   {
     // 导航列表
-    path: "/GuideList",
-    name: "GuideList",
+    path: "/guideList",
+    name: "guideList",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/guide/GuideList.vue"),
   },
@@ -70,10 +69,9 @@ const router = new VueRouter({
 });
 
 
-
 //路由前置守卫
 router.beforeEach((to, from, next) => {
-  const isLogin = VueCookie.get("token")? true : false;
+  const isLogin = VueCookie.get("token") ? true : false;
   if (to.path == "/login" || to.path == "/register") {
     next();
   } else {

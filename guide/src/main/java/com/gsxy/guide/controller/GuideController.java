@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @since 2024-03-13 17:35:24
  */
 @RestController
-@RequestMapping("guide")
+@RequestMapping(value = "guide", produces = "text/plain;charset=UTF-8")
 public class GuideController {
     /**
      * 服务对象
