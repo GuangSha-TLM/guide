@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-01 16:11:21
- * @LastEditTime: 2024-04-01 17:09:07
+ * @LastEditTime: 2024-04-04 16:26:40
  * @LastEditors: tianleiyu
  * @Description: 
  * @FilePath: /guide-vue/src/views/user/Login.vue
@@ -9,8 +9,9 @@
 -->
 
 <template>
-    <div class="container">
-        <div class="login-wrapper">
+    <div class="receptacle">
+        <div class="box">
+            <div class="login-wrapper">
             <el-form :model="user" :rules="rules" ref="user" class="demo-ruleForm">
                 <div class="form-wrapper">
                     <div class="header">Login</div>
@@ -32,6 +33,8 @@
                 <router-link to="/LoginTwo">另外一套登录方法--></router-link>
             </div>
         </div>
+        </div>
+        
 
     </div>
 
@@ -98,14 +101,24 @@ export default {
 /*
       这里写PC端的样式
     */
- 
 
-.container {
- 
+
+.receptacle {
     height: 100%;
-    // position: absolute;
-    background-color:  #f7f7f7;
-    // background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.box {
+    height: 100%;
+    width: 100%;
+    background-color: #f7f7f7;   
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .login-wrapper {
@@ -115,11 +128,8 @@ export default {
     height: 588Px;
     border-radius: 15Px;
     padding: 0 50Px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     
+
 }
 
 .header {
