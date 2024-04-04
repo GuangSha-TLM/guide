@@ -1,7 +1,5 @@
 <template>
-    <div class="hello">
-
-
+    <div class="hello"> 
         <div class="footer pt-lg-7 footer-dark bg-dark">
             <!-- SVG shape -->
             <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
