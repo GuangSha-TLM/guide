@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-05 20:36:36
+ * @LastEditTime: 2024-04-05 23:21:03
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -29,7 +29,7 @@
           <template slot-scope="scope">
             <el-button @click="handleGet(scope.$index, scope.row)" type="text" size="small">查看
             </el-button>
-            <el-button @click="guideUpdate(scope.$index, scope.row)" type="text" size="small">编辑</el-button>
+            <el-button @click="handleUpdate(scope.$index, scope.row)" type="text" size="small">编辑</el-button>
             <el-button @click="handleDelete(scope.$index, scope.row)" type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -115,9 +115,13 @@ export default {
         );
       });
     },
-    handleEdit(index, row) {
+    handleUpdate(index, row) {
       console.log(index, row);
-    },
+      this.$router.push({
+        path: "/guide/guideUpdate",
+        params: { id: row.id }
+      })
+   },
     handleDelete(index, row) {
       console.log(index, row);
 
@@ -162,9 +166,7 @@ export default {
         console.log(this.tableData);
       });
     },
-    formatter(row, column) {
-      return row.address;
-    },
+ 
   },
 };
 </script>
