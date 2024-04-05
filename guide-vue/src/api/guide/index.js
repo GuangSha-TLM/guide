@@ -34,7 +34,7 @@ export function guideDelete(id) {
   return http({
     url: "/api/guide/deleteById",
     method: "post",
-    data: id,
+    params: { id: id },
   });
 }
 

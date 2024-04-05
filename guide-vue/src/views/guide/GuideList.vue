@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-05 17:37:29
+ * @LastEditTime: 2024-04-05 20:36:36
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -53,7 +53,7 @@ export default {
       target: {},
       listMessage: {
         start: 0,
-        size: 5,
+        size: 10,
         guide: {},
       },
       message: "",
@@ -120,6 +120,34 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
+
+      console.log(row.id);
+      this.$confirm('此操作将永久删除该网页信息, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        console.log(row.id);
+        console.log("???");
+        const resp = guideDelete(row.id).then((res) => {
+          if (res.data.code === "0x200") {
+            this.$message({
+              showClose: true,
+              message: "删除成功!",
+              type: "success",
+            });
+          }
+        })
+
+        location.reload()
+
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
+
     },
     refresh() {
       const resp = guideList(this.listMessage).then((res) => {

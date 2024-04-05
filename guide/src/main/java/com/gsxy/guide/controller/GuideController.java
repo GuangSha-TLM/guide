@@ -76,8 +76,8 @@ public class GuideController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping("/deleteById")
-    public String deleteById(@PathVariable("id")  Long id) {
+    @PostMapping("/deleteById")
+    public String deleteById(@RequestParam("id")  Long id) {
         return JSONArray.toJSONString(guideService.deleteById(id));
     }
 
