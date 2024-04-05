@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-05 23:21:03
+ * @LastEditTime: 2024-04-06 00:06:07
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -117,10 +117,21 @@ export default {
     },
     handleUpdate(index, row) {
       console.log(index, row);
-      this.$router.push({
-        path: "/guide/guideUpdate",
-        params: { id: row.id }
-      })
+
+      //直接跳转到编辑页面 
+      // this.$router.push('/guideUpdate')
+      
+      //在页面跳转时传递参数
+      // this.$router.push({
+      //   name: 'guideUpdate',
+      //   params: { id: row.id }
+      // })
+
+      //跳转并将参数存储到本地
+      localStorage.setItem('updateGuide', row.id)
+      this.$router.push('/guideUpdate')
+    
+      
    },
     handleDelete(index, row) {
       console.log(index, row);

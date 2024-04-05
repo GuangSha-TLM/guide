@@ -65,7 +65,7 @@ public class GuideController {
      * @param guide 实体
      * @return 编辑结果
      */
-    @PutMapping("/edit")
+    @PostMapping("/edit")
     public String edit(@RequestBody Guide guide) {
         return JSONArray.toJSONString(guideService.update(guide));
     }

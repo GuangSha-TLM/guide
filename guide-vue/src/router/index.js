@@ -2,7 +2,7 @@
  * @Author: Oh...Yeah!!! 614988210@qq.com
  * @Date: 2024-04-01 16:30:20
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
- * @LastEditTime: 2024-04-05 23:19:06
+ * @LastEditTime: 2024-04-05 23:38:56
  * @FilePath: \guide-vue\src\router\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -57,12 +57,10 @@ const routes = [
   {
     // 导航信息修改列表
     path: "/guideUpdate",
-    name: "GuideUpdate",
+    name: "guideUpdate",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/guide/GuideUpdate.vue"),
   },
-
-  ,
   {
     // 登录页面二
     path: "/LoginTwo",
