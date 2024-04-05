@@ -44,8 +44,8 @@ public class GuideController {
      * @return 单条数据
      */
     @GetMapping("{id}")
-    public ResponseVo queryById(@PathVariable("id") Long id) {
-        return guideService.queryById(id);
+    public String queryById(@PathVariable("id") Long id) {
+        return JSONArray.toJSONString(guideService.queryById(id));
     }
 
     /**
@@ -55,8 +55,8 @@ public class GuideController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public ResponseVo add(@RequestBody Guide guide) {
-        return guideService.insert(guide);
+    public String add(@RequestBody Guide guide) {
+        return JSONArray.toJSONString(guideService.insert(guide));
     }
 
     /**
@@ -66,8 +66,8 @@ public class GuideController {
      * @return 编辑结果
      */
     @PutMapping("/edit")
-    public ResponseVo edit(@RequestBody Guide guide) {
-        return guideService.update(guide);
+    public String edit(@RequestBody Guide guide) {
+        return JSONArray.toJSONString(guideService.update(guide));
     }
 
     /**
@@ -77,8 +77,8 @@ public class GuideController {
      * @return 删除是否成功
      */
     @DeleteMapping("/deleteById")
-    public ResponseVo deleteById(@RequestParam("id")  Long id) {
-        return guideService.deleteById(id);
+    public String deleteById(@PathVariable("id")  Long id) {
+        return JSONArray.toJSONString(guideService.deleteById(id));
     }
 
 
