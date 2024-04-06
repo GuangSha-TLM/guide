@@ -41,9 +41,8 @@
 </template>
 
 <script>
-import { userLogin } from '@/api/user';
+import { userLogin } from '@/api/user'
 import { setToken } from '@/utils/token.js'
-
 export default {
     name: 'HomeView',
     data() {
