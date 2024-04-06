@@ -2,7 +2,7 @@
  * @Author: Oh...Yeah!!! 614988210@qq.com
  * @Date: 2024-04-05 21:01:38
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
- * @LastEditTime: 2024-04-06 00:26:11
+ * @LastEditTime: 2024-04-06 10:45:16
  * @FilePath: \guide-vue\src\views\guide\Update.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -44,18 +44,21 @@
             <el-form-item label="修改人id">
                 <el-input v-model="form.updateBy"></el-input>
             </el-form-item>
+
             <el-form-item label="信息状态">
-                <el-select v-model="form.status" placeholder="请选择该信息的状态情况">
-                    <el-option label="正常状态" value="0"></el-option>
-                    <el-option label="特殊状态" value="1"></el-option>
-                </el-select>
+                <el-radio-group v-model="form.status">
+                    <el-radio :label="0">正常状态</el-radio>
+                    <el-radio :label="1">特殊状态</el-radio>
+                </el-radio-group>
             </el-form-item>
+
             <el-form-item label="逻辑删除">
-                <el-select v-model="form.delFlag"  placeholder="请选择删除情况">
-                    <el-option label="未删除" value="0"></el-option>
-                    <el-option label="已删除" value="1"></el-option>
-                </el-select>
+                <el-radio-group v-model="form.delFlag">
+                    <el-radio :label="0">未删除</el-radio>
+                    <el-radio :label="1">已删除</el-radio>
+                </el-radio-group>
             </el-form-item>
+
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">立即修改</el-button>
                 <el-button>取消</el-button>
@@ -108,8 +111,9 @@ export default {
                 _this.form.createTime = res.data.data.createTime;
                 _this.form.updateBy = res.data.data.updateBy;
                 _this.form.updateTime = res.data.data.updateTime;
-                _this.form.delFlag = res.data.data.delFlag; 
+                _this.form.delFlag = res.data.data.delFlag;
                 _this.form.status = res.data.data.status;
+                
         })
 
         _this.flag = true;
@@ -142,6 +146,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.el-radio {
+    margin-top: 10px;
+}
+
+
 .box {
     width: 100%;
     margin-top: 5%;
