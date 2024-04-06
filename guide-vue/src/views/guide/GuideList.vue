@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-06 13:58:48
+ * @LastEditTime: 2024-04-06 14:19:42
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -35,35 +35,35 @@
         </el-table-column>
       </el-table>
 
-      <el-dialog :title=target.name  :visible.sync="dialogFormVisible">
+      <el-dialog :title=target.name :visible.sync="dialogFormVisible">
         <div slot="footer" class="dialog-footer">
           <el-form ref="form" :model="target" label-width="80px">
             <el-form-item label="编号">
-              <el-input v-model="target.id" :disabled="true"></el-input>
+              <el-input v-model="target.id" readonly></el-input>
             </el-form-item>
             <el-form-item label="名字">
-              <el-input v-model="target.name" :disabled="true"></el-input>
+              <el-input v-model="target.name" readonly></el-input>
             </el-form-item>
             <el-form-item label="链接">
-              <el-input v-model="target.toLink" :disabled="true"></el-input>
+              <el-input v-model="target.toLink" readonly></el-input>
             </el-form-item>
             <el-form-item label="创建时间">
-              <el-input v-model="target.createTime" :disabled="true"></el-input>
+              <el-input v-model="target.createTime" readonly></el-input>
             </el-form-item>
             <el-form-item label="创建人">
-              <el-input v-model="target.createBy" :disabled="true"></el-input>
+              <el-input v-model="target.createBy" readonly></el-input>
             </el-form-item>
             <el-form-item label="修改时间">
-              <el-input v-model="target.updateTime" :disabled="true"></el-input>
+              <el-input v-model="target.updateTime" readonly></el-input>
             </el-form-item>
             <el-form-item label="修改人">
-              <el-input v-model="target.updateBy" :disabled="true"></el-input>
+              <el-input v-model="target.updateBy" readonly></el-input>
             </el-form-item>
             <el-form-item label="状态">
-              <el-input v-model="target.delFlag" :disabled="true"></el-input>
+              <el-input v-model="target.delFlag" readonly></el-input>
             </el-form-item>
             <el-form-item label="逻辑删除">
-              <el-input v-model="target.status" :disabled="true"></el-input>
+              <el-input v-model="target.status" readonly></el-input>
             </el-form-item>
 
           </el-form>
