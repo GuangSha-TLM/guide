@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-06 14:19:42
+ * @LastEditTime: 2024-04-06 15:04:39
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -11,7 +11,9 @@
   <div class="receptacle">
     <div class="target">
       <el-row>
-        <el-button @click="refresh" type="primary">页面刷新</el-button>
+        <el-button @click="refresh" type="primary" style="margin-right: 665px;">页面刷新</el-button>
+
+        <el-button @click="handleAdd()" type="success">添加数据</el-button>
       </el-row>
 
       <el-table :data="tableData" border>
@@ -79,8 +81,6 @@
 import {
   guideList,
   guideDelete,
-  guideUpdate,
-  guideAdd,
   guideGet,
 } from "@/api/guide";
 
@@ -115,15 +115,18 @@ export default {
     });
   },
   methods: {
+    handleAdd() {
+      this.$router.push('/guideAdd')
+    },
     //index:元素在数组中的索引
     //row:元素本身
     handleGet(index, row) {
       guideGet(row.id).then((res) => {
-        
-        res.data.data.delFlag = res.data.data.delFlag === 0 ? '未删除' : '已删除';  
-        res.data.data.status  = res.data.data.status === 0 ? '正常状态' : '特殊状态';  
+
+        res.data.data.delFlag = res.data.data.delFlag === 0 ? '未删除' : '已删除';
+        res.data.data.status = res.data.data.status === 0 ? '正常状态' : '特殊状态';
         this.target = res.data.data;
-      
+
         this.dialogFormVisible = true;
 
       });
@@ -197,8 +200,8 @@ export default {
 
 <style lang="scss">
 .el-dialog__body {
-    padding: 0px 0px;  
- 
+  padding: 0px 0px;
+
 }
 
 .receptacle {
