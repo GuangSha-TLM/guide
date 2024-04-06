@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-06 00:06:07
+ * @LastEditTime: 2024-04-06 11:50:13
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -87,32 +87,60 @@ export default {
         // console.log(res);
         // console.log(res.data.data);
         this.target = res.data.data;
-        console.log("aaa");
-        console.log(this.target);
-
+        // console.log("aaa");
+        // console.log(this.target);
+        console.log("???");
+        console.log(this.target.createTime);
         this.$alert(
-          `
-            id：${row.id}   
-            name：${row.name}   
-            toLink：${row.toLink}   
-            createTime：${row.createTime}   
-            createBy：${row.createBy}   
-            updateBy：${row.updateBy}   
-            updateTime：${row.updateTime}    
-            delFlag：${row.delFlag}   
-            status：${row.status}   
-          `,
-          row.name,
+        
+          `<div><form>  <h5>网站信息</h5> 
+                  <label>编号：</label>     <input value = ${this.target.id}         type="text" disabled="true" >   
+            <br>   <label>名字：</label>     <input value = ${this.target.name}       type="text"  disabled="true" >
+            <br>   <label>链接：</label>     <input value = ${this.target.toLink}     type="text"  disabled="true" >  
+            <br>   <label>创建时间：</label> <input value = ${this.target.createTime}  type="date" disabled="true" > 
+            <br>   <label>创建人：</label>   <input value = ${this.target.createBy}    type="text" disabled="true" >
+            <br>   <label>修改时间：</label> <input value = ${this.target.updateTime}  type="date" disabled="true" >
+            <br>   <label>修改人：</label>   <input value = ${this.target.updateBy}    type="text" disabled="true" >
+            <br>   <label>状态：</label>     <input value = ${this.target.delFlag === 0 ? "未删除" : "已删除"}     type="text" disabled="true" >
+            <br>   <label>逻辑删除：</label>  <input value = ${this.target.status === 0 ? "正常状态" : "特殊状态"}      type="text" disabled="true" >
+            </form></div>`
+
+          , row.name,
+
           {
-            confirmButtonText: "确定",
-            callback: (action) => {
-              this.$message({
-                type: "info",
-                message: `action: ${action}`,
-              });
-            },
-          }
-        );
+            dangerouslyUseHTMLString: true
+          }).then(() => {
+ 
+          }).catch(() => { }) // 添加错误捕获
+        
+
+
+        // this.$alert(
+        //   `
+        //     id：${row.id}   
+        //     name：${row.name}   
+        //     toLink：${row.toLink}   
+        //     createTime：${row.createTime}   
+        //     createBy：${row.createBy}   
+        //     updateBy：${row.updateBy}   
+        //     updateTime：${row.updateTime}    
+        //     delFlag：${row.delFlag}   
+        //     status：${row.status}   
+        //   `,
+        //   row.name,
+        //   {
+        //     confirmButtonText: "确定",
+        //     callback: (action) => {
+        //       this.$message({
+        //         type: "info",
+        //         message: `action: ${action}`,
+        //       });
+        //     },
+        //   }
+        // );
+
+
+
       });
     },
     handleUpdate(index, row) {
@@ -120,7 +148,7 @@ export default {
 
       //直接跳转到编辑页面 
       // this.$router.push('/guideUpdate')
-      
+
       //在页面跳转时传递参数
       // this.$router.push({
       //   name: 'guideUpdate',
@@ -130,9 +158,9 @@ export default {
       //跳转并将参数存储到本地
       localStorage.setItem('updateGuide', row.id)
       this.$router.push('/guideUpdate')
-    
-      
-   },
+
+
+    },
     handleDelete(index, row) {
       console.log(index, row);
 
@@ -177,7 +205,7 @@ export default {
         console.log(this.tableData);
       });
     },
- 
+
   },
 };
 </script>
