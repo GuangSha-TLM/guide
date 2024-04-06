@@ -1,8 +1,8 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-06 13:45:25
- * @LastEditors: tianleiyu
+ * @LastEditTime: 2024-04-06 13:58:48
+ * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
  * 可以输入预定的版权声明、个性签名、空行等
@@ -35,40 +35,39 @@
         </el-table-column>
       </el-table>
 
-      <el-dialog :visible.sync="dialogFormVisible">
-
+      <el-dialog :title=target.name  :visible.sync="dialogFormVisible">
         <div slot="footer" class="dialog-footer">
           <el-form ref="form" :model="target" label-width="80px">
             <el-form-item label="编号">
-              <el-input v-model="target.id":disabled="true"></el-input>
+              <el-input v-model="target.id" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="名字">
               <el-input v-model="target.name" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="链接">
-              <el-input v-model="target.toLink":disabled="true"></el-input>
+              <el-input v-model="target.toLink" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="创建时间">
-              <el-input v-model="target.createTime":disabled="true"></el-input>
+              <el-input v-model="target.createTime" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="创建人">
-              <el-input v-model="target.createBy":disabled="true"></el-input>
+              <el-input v-model="target.createBy" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="修改时间">
-              <el-input v-model="target.updateTime":disabled="true"></el-input>
+              <el-input v-model="target.updateTime" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="修改人">
-              <el-input v-model="target.updateBy":disabled="true"></el-input>
+              <el-input v-model="target.updateBy" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="状态">
-              <el-input v-model="target.delFlag":disabled="true"></el-input>
+              <el-input v-model="target.delFlag" :disabled="true"></el-input>
             </el-form-item>
             <el-form-item label="逻辑删除">
-              <el-input v-model="target.status":disabled="true"></el-input>
+              <el-input v-model="target.status" :disabled="true"></el-input>
             </el-form-item>
-            
+
           </el-form>
-          
+
           <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
         </div>
       </el-dialog>
@@ -197,6 +196,11 @@ export default {
 </script>
 
 <style lang="scss">
+.el-dialog__body {
+    padding: 0px 0px;  
+ 
+}
+
 .receptacle {
   width: 100%;
   display: flex;
