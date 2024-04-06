@@ -1,8 +1,8 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-06 11:50:13
- * @LastEditors: Oh...Yeah!!! 614988210@qq.com
+ * @LastEditTime: 2024-04-06 13:45:25
+ * @LastEditors: tianleiyu
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
  * 可以输入预定的版权声明、个性签名、空行等
@@ -34,6 +34,44 @@
           </template>
         </el-table-column>
       </el-table>
+
+      <el-dialog :visible.sync="dialogFormVisible">
+
+        <div slot="footer" class="dialog-footer">
+          <el-form ref="form" :model="target" label-width="80px">
+            <el-form-item label="编号">
+              <el-input v-model="target.id":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="名字">
+              <el-input v-model="target.name" :disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="链接">
+              <el-input v-model="target.toLink":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="创建时间">
+              <el-input v-model="target.createTime":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="创建人">
+              <el-input v-model="target.createBy":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="修改时间">
+              <el-input v-model="target.updateTime":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="修改人">
+              <el-input v-model="target.updateBy":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="状态">
+              <el-input v-model="target.delFlag":disabled="true"></el-input>
+            </el-form-item>
+            <el-form-item label="逻辑删除">
+              <el-input v-model="target.status":disabled="true"></el-input>
+            </el-form-item>
+            
+          </el-form>
+          
+          <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        </div>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -58,6 +96,7 @@ export default {
       },
       message: "",
       tableData: [],
+      dialogFormVisible: false,
     };
   },
   //页面直接获取数据并刷新
@@ -80,66 +119,13 @@ export default {
     //index:元素在数组中的索引
     //row:元素本身
     handleGet(index, row) {
-      // console.log(index, row);
-      // console.log(row.id);
-      // console.log(row.name);
       guideGet(row.id).then((res) => {
-        // console.log(res);
-        // console.log(res.data.data);
+        
+        res.data.data.delFlag = res.data.data.delFlag === 0 ? '未删除' : '已删除';  
+        res.data.data.status  = res.data.data.status === 0 ? '正常状态' : '特殊状态';  
         this.target = res.data.data;
-        // console.log("aaa");
-        // console.log(this.target);
-        console.log("???");
-        console.log(this.target.createTime);
-        this.$alert(
-        
-          `<div><form>  <h5>网站信息</h5> 
-                  <label>编号：</label>     <input value = ${this.target.id}         type="text" disabled="true" >   
-            <br>   <label>名字：</label>     <input value = ${this.target.name}       type="text"  disabled="true" >
-            <br>   <label>链接：</label>     <input value = ${this.target.toLink}     type="text"  disabled="true" >  
-            <br>   <label>创建时间：</label> <input value = ${this.target.createTime}  type="date" disabled="true" > 
-            <br>   <label>创建人：</label>   <input value = ${this.target.createBy}    type="text" disabled="true" >
-            <br>   <label>修改时间：</label> <input value = ${this.target.updateTime}  type="date" disabled="true" >
-            <br>   <label>修改人：</label>   <input value = ${this.target.updateBy}    type="text" disabled="true" >
-            <br>   <label>状态：</label>     <input value = ${this.target.delFlag === 0 ? "未删除" : "已删除"}     type="text" disabled="true" >
-            <br>   <label>逻辑删除：</label>  <input value = ${this.target.status === 0 ? "正常状态" : "特殊状态"}      type="text" disabled="true" >
-            </form></div>`
-
-          , row.name,
-
-          {
-            dangerouslyUseHTMLString: true
-          }).then(() => {
- 
-          }).catch(() => { }) // 添加错误捕获
-        
-
-
-        // this.$alert(
-        //   `
-        //     id：${row.id}   
-        //     name：${row.name}   
-        //     toLink：${row.toLink}   
-        //     createTime：${row.createTime}   
-        //     createBy：${row.createBy}   
-        //     updateBy：${row.updateBy}   
-        //     updateTime：${row.updateTime}    
-        //     delFlag：${row.delFlag}   
-        //     status：${row.status}   
-        //   `,
-        //   row.name,
-        //   {
-        //     confirmButtonText: "确定",
-        //     callback: (action) => {
-        //       this.$message({
-        //         type: "info",
-        //         message: `action: ${action}`,
-        //       });
-        //     },
-        //   }
-        // );
-
-
+      
+        this.dialogFormVisible = true;
 
       });
     },
