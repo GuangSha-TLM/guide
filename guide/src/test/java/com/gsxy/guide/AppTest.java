@@ -1,14 +1,17 @@
 package com.gsxy.guide;
 
+import cn.hutool.core.date.DateTime;
 import com.alibaba.fastjson2.JSONArray;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.util.Date;
+
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
     extends TestCase
 {
     /**
@@ -37,6 +40,10 @@ public class AppTest
         assertTrue( true );
     }
 
+    public static void main(String[] args) {
+        System.out.println(new DateTime());
+        System.out.println(new Date());
 
+    }
 
 }

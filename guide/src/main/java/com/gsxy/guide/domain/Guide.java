@@ -1,5 +1,8 @@
 package com.gsxy.guide.domain;
 
+import cn.hutool.core.date.DateTime;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -24,7 +27,7 @@ public class Guide implements Serializable {
 /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 /**
      * 创建人
      */
@@ -32,7 +35,7 @@ public class Guide implements Serializable {
 /**
      * 修改时间
      */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 /**
      * 修改人
      */
@@ -49,8 +52,16 @@ public class Guide implements Serializable {
     public Guide() {
     }
 
-    public Guide(String name) {
+    public Guide(Long id, String name, String toLink, LocalDateTime createTime, Long createBy, LocalDateTime updateTime, Long updateBy, Integer status, Integer delFlag) {
+        this.id = id;
         this.name = name;
+        this.toLink = toLink;
+        this.createTime = createTime;
+        this.createBy = createBy;
+        this.updateTime = updateTime;
+        this.updateBy = updateBy;
+        this.status = status;
+        this.delFlag = delFlag;
     }
 
     public Long getId() {
@@ -77,11 +88,11 @@ public class Guide implements Serializable {
         this.toLink = toLink;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
@@ -93,11 +104,11 @@ public class Guide implements Serializable {
         this.createBy = createBy;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -125,5 +136,19 @@ public class Guide implements Serializable {
         this.delFlag = delFlag;
     }
 
+    @Override
+    public String toString() {
+        return "Guide{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", toLink='" + toLink + '\'' +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
+                ", updateTime=" + updateTime +
+                ", updateBy=" + updateBy +
+                ", status=" + status +
+                ", delFlag=" + delFlag +
+                '}';
+    }
 }
 
