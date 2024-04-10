@@ -59,7 +59,8 @@
 
 <script>
 import Foot from "./fream/Foot.vue";
-import Top from "./fream/LoginTop.vue";
+import Top from "./fream/LoginTop.vue"; 
+import { userRegister } from '@/api/user';
 
 export default {
     name: "Register",
@@ -114,13 +115,33 @@ export default {
                 alert("密码设置失败");
                 return;
             }
-            console.log(this.user);
-            let obj = await synRequestPost("/user/userReg", this.user);
 
-            if (obj.code == "0x200") {
-                this.$router.push("/Login");
+            const us = {
+                username: this.user.username,
+                password: this.user.password,
             }
 
+            console.log(us); 
+            userRegister(us).then((res) => {
+                if (res.data.code === '0x200') {
+                    this.$message({
+                        showClose: true,
+                        message: '注册成功!',
+                        type: 'success'
+                    });
+                    this.$router.push('/LoginTwo')
+                } else {
+                    this.$message({
+                        showClose: true,
+                        message: res.data.message,
+                        type: 'error'
+                    });
+                    this.user.username = ''
+                    this.user.password = ''
+                    this.user.confirmPassword = ''
+                }
+            })
+ 
             this.switchbutton = false;
         },
     },
