@@ -92,7 +92,7 @@ const router = new VueRouter({
 //路由前置守卫
 router.beforeEach((to, from, next) => {
   const isLogin = VueCookie.get("token") ? true : false;
-  if (to.path == "/login" || to.path == "/register") {
+  if (to.path == "/login" || to.path == "/register" || to.path == "/UserReg" || to.path == "/LoginTwo" ) {
     next();
   } else {
     isLogin ? next() : next("/login");
