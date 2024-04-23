@@ -1,7 +1,7 @@
 <!--
  * @Author: tianleiyu 
  * @Date: 2024-04-04 16:04:06
- * @LastEditTime: 2024-04-06 15:04:39
+ * @LastEditTime: 2024-04-16 18:34:51
  * @LastEditors: Oh...Yeah!!! 614988210@qq.com
  * @Description: 
  * @FilePath: /guide-vue/src/views/guide/GuideList.vue
@@ -21,10 +21,8 @@
         </el-table-column>
         <el-table-column prop="name" label="姓名" width="180" align="center">
         </el-table-column>
-
-        <el-table-column prop="toLink" @click="toPage(id)" label="链接" width="180" align="center">
-        </el-table-column>
-
+          <el-table-column prop="toLink" @click="toPage(id)" label="链接" width="180" align="center">
+          </el-table-column>
         <el-table-column prop="updateTime" label="更新时间" width="180" align="center">
         </el-table-column>
         <el-table-column label="操作" width="150px" align="center">
