@@ -65,8 +65,12 @@ export default {
     },
     methods: {
         submitForm(formName) {
+
+            
             this.$refs[formName].validate((valid) => {
                 if (valid) {
+
+
                     userLogin(this.user).then(res => {
                         if (res.data.code === '0x200') {
                             this.$message({
@@ -90,10 +94,15 @@ export default {
                             this.user.password = ''
                         }
                     })
+
+
                 } else {
                     return false;
                 }
             });
+
+
+
         },
     }
 }
